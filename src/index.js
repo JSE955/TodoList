@@ -1,6 +1,9 @@
 import { createTodo } from "./Todo";
 import { createProject } from "./Project";
+import { loadAllProjects } from "./loadAllProjects";
 import './style.css';
+
+const content = document.querySelector('.content');
 
 const projects = [];
 
@@ -8,7 +11,7 @@ function addNewProject(project) {
     projects.push(project);
 }
 
-
-
 addNewProject(createProject('Default'));
-console.log(projects);
+addNewProject(createProject('Work Tasks'));
+
+content.appendChild(loadAllProjects(projects));
