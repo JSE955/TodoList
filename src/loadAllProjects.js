@@ -1,9 +1,16 @@
+import { addNewProject } from ".";
+
 function loadAllProjects(projects) {
     const content = document.createElement('div');
 
     const addProjectButton = document.createElement('button');
     addProjectButton.textContent = 'Add New Project';
     addProjectButton.setAttribute('type', 'button');
+    addProjectButton.addEventListener('click', () => {
+        let projectName = prompt('Enter new project name: ');
+        addNewProject(projectName);
+    })
+
     content.appendChild(addProjectButton);
 
     const table = document.createElement('table');

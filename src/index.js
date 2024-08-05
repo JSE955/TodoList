@@ -15,3 +15,5 @@ addNewProject(createProject('Default'));
 addNewProject(createProject('Work Tasks'));
 
 body.appendChild(loadAllProjects(projects));
+
+export { addNewProject };
