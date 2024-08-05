@@ -1,7 +1,14 @@
 import { createTodo } from "./Todo";
 import { createProject } from "./Project";
+import './style.css';
 
-let myTodo = createTodo('test', 'test description', Date.now(), 1);
-let myProject = createProject('default');
-myProject.addTodo(myTodo);
-console.log(myProject.getTodos());
+const projects = [];
+
+function addNewProject(project) {
+    projects.push(project);
+}
+
+
+
+addNewProject(createProject('Default'));
+console.log(projects);
