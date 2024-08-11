@@ -19,8 +19,7 @@ function loadAllProjects(projects) {
     addProjectButton.addEventListener('click', () => {
         let projectName = prompt('Enter new project name: ');
         addNewProject(createProject(projectName));
-        body.innerHTML = ""
-        body.appendChild(loadAllProjects(projects))
+        reloadProjects();
     })
 
     content.appendChild(addProjectButton);
@@ -51,6 +50,14 @@ function loadAllProjects(projects) {
         let editButton = document.createElement('button');
         editButton.textContent = 'Edit Details';
         editButton.setAttribute('type', 'button');
+        editButton.addEventListener('click', () => {
+            let updatedName = prompt('Update project name:', projects[i].name);
+            if (updatedName !== "" && updatedName !== null) {
+                projects[i].name = updatedName;
+            }
+            reloadProjects();
+        })
+
         editCell.appendChild(editButton);
 
         let viewCell = document.createElement('td');
@@ -70,6 +77,13 @@ function loadAllProjects(projects) {
     return content;
 }
 
-addNewProject(createProject('Default'));
-addNewProject(createProject('Work Tasks'));
+function reloadProjects() {
+    body.innerHTML = ""
+    body.appendChild(loadAllProjects(projects))
+}
+
+let myProject = createProject('Default');
+myProject.addTodo(createTodo('Wash the car', 'my car is super dirty', Date.now(), "high"));
+myProject.addTodo(createTodo('Cook dinner', `I'm so hungry`, Date.now(), "high"));
+addNewProject(myProject);
 body.appendChild(loadAllProjects(projects));
