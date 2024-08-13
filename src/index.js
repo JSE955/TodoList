@@ -82,6 +82,11 @@ function reloadProjects() {
     body.appendChild(loadAllProjects(projects))
 }
 
+function viewProjectTodos(project) {
+    console.log("placeholder"
+    )
+}
+
 let myProject = createProject('Default');
 myProject.addTodo(createTodo('Wash the car', 'my car is super dirty', Date.now(), "high"));
 myProject.addTodo(createTodo('Cook dinner', `I'm so hungry`, Date.now(), "high"));
